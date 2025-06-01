@@ -1,9 +1,9 @@
-import openai
 import os
 from dotenv import load_dotenv
+from openai import OpenAI
 
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def analyze_ritual(ritual_data: dict) -> str:
     prompt = f"""
@@ -20,11 +20,13 @@ Ritüel Verisi:
 Lütfen 3 paragraf olarak üret.
 """
 
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-4",
-        messages=[{"role": "user", "content": prompt}],
+        messages=[
+            {"role": "user", "content": prompt}
+        ],
         temperature=0.8,
-        max_tokens=500,
+        max_tokens=500
     )
 
     return response.choices[0].message.content.strip()
