@@ -8,8 +8,16 @@ st.title("🌌 Tengri.exe Ritüel Başlatıcı")
 if st.button("🔮 Ritüeli Başlat"):
     result = perform_ritual()
 
-    with open("outputs/results.json", "w") as f:
-        json.dump(result, f, indent=2)
+    from datetime import datetime
+
+timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+log_path = f"outputs/logs/result_{timestamp}.json"
+with open(log_path, "w") as f:
+    json.dump(result, f, indent=2)
+
+with open("outputs/results.json", "w") as f:
+    json.dump(result, f, indent=2)
+
 
     st.success("Ritüel tamamlandı!")
     st.json(result)
