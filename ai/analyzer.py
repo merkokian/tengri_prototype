@@ -22,7 +22,6 @@ Lütfen 3 paragraf olarak üret.
 
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
-,
         messages=[
             {"role": "user", "content": prompt}
         ],
