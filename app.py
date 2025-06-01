@@ -1,6 +1,7 @@
 import streamlit as st
 import json
 from rituals.sky_ritual import perform_ritual
+from datetime import datetime
 
 st.set_page_config(page_title="Tengri.exe Ritüel Simülatörü")
 st.title("🌌 Tengri.exe Ritüel Başlatıcı")
